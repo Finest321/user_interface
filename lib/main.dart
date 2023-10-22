@@ -9,6 +9,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           leading: PopupMenuButton(
@@ -172,11 +173,11 @@ class MyApp extends StatelessWidget {
                       children: [
                         ProductItem(
                             imagePath: 'assets/gown1.png',
-                            name: 'Cooking Pot',
+                            name: 'Blue Gown',
                             price: '₦15,000'),
                         ProductItem(
                             imagePath: 'assets/gown.png',
-                            name: 'CCTV Camera',
+                            name: 'Red Gown',
                             price: '₦18,000'),
                       ],
                     ),
@@ -232,13 +233,20 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.asset(imagePath, height: 100, width: 100),
-        SizedBox(height: 8),
-        Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
-        Text(price, style: TextStyle(fontWeight: FontWeight.bold)),
-      ],
+    return GestureDetector(
+      onTap: () {
+        // Handle the click action here, e.g., navigate to a product details screen.
+        // You can navigate to a different screen or perform any other action.
+        print('Clicked on: $name');
+      },
+      child: Column(
+        children: [
+          Image.asset(imagePath, height: 100, width: 100),
+          SizedBox(height: 8),
+          Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+          Text(price, style: TextStyle(fontWeight: FontWeight.bold)),
+        ],
+      ),
     );
   }
 }
